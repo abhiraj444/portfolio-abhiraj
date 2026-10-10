@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Abhiraj Times</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      :root { --x-paper:#F3EEE3; --x-ink:#141414; --x-grey:#5A5650; --x-red:#B3261E; --x-rule:1px solid #141414; --x-hair:1px solid rgba(20,20,20,.35); }
+      html, body { background:var(--x-paper); color:var(--x-ink); color-scheme:light; }
+      body {
+        font:400 15.5px/1.55 "Libre Caslon Text", Georgia, serif;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08 0 0 0 0 .07 0 0 0 0 .05 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      .page { max-width:1240px; }
+      .x-paper { padding:18px 0 40px; }
+      .x-paper a { color:inherit; }
+      .x-paper a:focus-visible { outline:2px solid var(--x-red); outline-offset:2px; }
+      .x-sc { font-variant-caps:all-small-caps; letter-spacing:.08em; }
+      .x-k { font:700 13px/1.2 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.12em; color:var(--x-red); margin:0 0 6px; }
+      .x-h { font-family:"Playfair Display", serif; font-weight:900; letter-spacing:-.015em; line-height:1.02; margin:0 0 8px; text-wrap:balance; }
+      .x-deck { font:italic 400 17px/1.35 "Playfair Display", serif; color:var(--x-grey); margin:0 0 12px; }
+      .x-body p { text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin:0 0 .8em; }
+      .x-drop::first-letter { float:left; font:900 4.1em/.78 "Playfair Display", serif; padding:.06em .08em 0 0; }
+      .x-label { font:700 13px/1 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.14em; color:var(--x-red); border-top:var(--x-rule); border-bottom:var(--x-hair); padding:6px 0 5px; margin:0 0 12px; }
+      .x-more { font:13px/1.5 "Libre Caslon Text", serif; display:flex; flex-wrap:wrap; gap:4px 14px; align-items:baseline; margin-top:6px; }
+      .x-more a { text-decoration:underline; text-underline-offset:3px; display:inline-flex; align-items:center; min-height:44px; min-width:44px; }
+      .x-ad a, .x-foot a { display:inline-flex; align-items:center; min-height:44px; text-underline-offset:3px; }
+      .x-jump { font-style:italic; color:var(--x-grey); }
+      .x-more .x-live { font-variant-caps:all-small-caps; letter-spacing:.08em; color:var(--x-grey); }
+
+      /* masthead */
+      .x-top { display:grid; grid-template-columns:150px 1fr 150px; align-items:center; gap:16px; }
+      .x-ear { border:var(--x-rule); padding:8px 10px; font:12px/1.35 "Libre Caslon Text", serif; text-align:center; }
+      .x-ear b { display:block; font-variant-caps:all-small-caps; letter-spacing:.1em; color:var(--x-red); }
+      .x-mast { font:700 clamp(40px, 8.4vw, 104px)/1 "UnifrakturCook", serif; text-align:center; margin:0; letter-spacing:-.01em; white-space:nowrap; }
+      .x-dateline { border-top:4px double var(--x-ink); border-bottom:var(--x-rule); margin-top:10px; padding:6px 0; text-align:center; font:13px/1.4 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.1em; }
+      .x-ticker { display:flex; border-bottom:var(--x-rule); overflow:hidden; font:500 13px/1 "IBM Plex Mono", monospace; }
+      .x-ticker b { flex:none; background:var(--x-ink); color:var(--x-paper); padding:9px 12px; font-family:"Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.14em; }
+      .x-tape { display:flex; white-space:nowrap; animation:x-tape 34s linear infinite; }
+      .x-tape > div { display:flex; flex:none; }
+      .x-tape span { padding:9px 22px; border-right:var(--x-hair); }
+      @keyframes x-tape { to { transform:translateX(-50%); } }
+
+      /* front page grid */
+      .x-fp { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,1fr); margin-top:18px; }
+      .x-fp-main { padding-right:20px; }
+      .x-fp-side { border-left:var(--x-hair); padding-left:20px; }
+      .x-lead { border-bottom:var(--x-rule); padding-bottom:18px; }
+      .x-lead .x-h { font-size:clamp(32px, 4.6vw, 58px); }
+      .x-lead .x-deck { font-size:21px; }
+      .x-lead-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:20px; }
+      .x-lead-grid .x-body { column-count:2; column-gap:20px; column-rule:var(--x-hair); }
+      .x-seconds { display:grid; grid-template-columns:1fr 1fr; padding-top:18px; }
+      .x-seconds > article:first-child { padding-right:20px; }
+      .x-seconds > article + article { border-left:var(--x-hair); padding-left:20px; }
+      .x-seconds .x-h { font-size:30px; }
+      .x-brief { border-bottom:var(--x-hair); padding-bottom:14px; margin-bottom:14px; }
+      .x-brief .x-h { font-size:21px; }
+      .x-brief .x-deck { font-size:15px; }
+      .x-brief .x-body p { font-size:14px; }
+      .x-art { margin:0 0 12px; border:var(--x-hair); background:rgba(255,255,255,.18); }
+      .x-art svg { display:block; width:100%; height:auto; }
+      .x-art figcaption, .x-cap { font:italic 12px/1.4 "Libre Caslon Text", serif; color:var(--x-grey); padding:6px 8px; border-top:var(--x-hair); }
+      .x-brief .x-art { max-width:220px; }
+      .x-photo { position:relative; overflow:hidden; }
+      .x-photo img { display:block; width:100%; height:auto; filter:grayscale(1) contrast(1.35) brightness(1.05); mix-blend-mode:multiply; }
+      .x-photo::after { content:""; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(20,20,20,.55) 0.9px, transparent 1.3px); background-size:4px 4px; mix-blend-mode:multiply; pointer-events:none; }
+      .x-editor { border:var(--x-rule); outline:var(--x-rule); outline-offset:3px; padding:14px; margin:8px 4px 14px; }
+      .x-editor p { font:italic 16px/1.45 "Playfair Display", serif; margin:0 0 8px; }
+      .x-editor cite { font-style:normal; font-variant-caps:all-small-caps; letter-spacing:.1em; font-size:14px; }
+      .x-class { border-top:4px double var(--x-ink); margin-top:22px; padding-top:12px; }
+      .x-ads { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:10px; }
+      .x-ad { border:var(--x-rule); padding:10px; font:13px/1.45 "Libre Caslon Text", serif; text-align:justify; hyphens:auto; }
+      .x-ad b { display:block; font:900 15px/1.1 "Playfair Display", serif; letter-spacing:.04em; text-align:center; border-bottom:var(--x-hair); padding-bottom:6px; margin-bottom:6px; }
+      .x-ad a { word-break:break-word; }
+      .x-foot { border-top:var(--x-rule); margin-top:24px; padding-top:10px; text-align:center; font:13px/1.5 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.1em; color:var(--x-grey); }
+
+      /* edition */
+      .x-back { display:inline-block; font:14px/1 "Libre Caslon Text", serif; text-decoration:none; border:var(--x-rule); padding:14px 14px; margin-bottom:14px; }
+      .x-back:hover { background:var(--x-ink); color:var(--x-paper); }
+      .x-edmast { text-align:center; border-bottom:4px double var(--x-ink); padding-bottom:8px; }
+      .x-edmast p { margin:0; font:italic 18px/1.3 "Playfair Display", serif; }
+      .x-edmast .x-mast { font-size:clamp(32px, 6vw, 64px); }
+      .x-edhead { text-align:center; padding:20px 0 16px; border-bottom:var(--x-rule); }
+      .x-edhead .x-h { font-size:clamp(34px, 6.2vw, 76px); max-width:1050px; margin:6px auto 12px; }
+      .x-edhead .x-deck { font-size:clamp(18px, 2vw, 23px); max-width:820px; margin:0 auto 10px; }
+      .x-by { font:13px/1 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.12em; }
+      .x-ed3 { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); padding-top:18px; }
+      .x-ed3 > div { padding:0 20px; }
+      .x-ed3 > div:first-child { padding-left:0; }
+      .x-ed3 > div:last-child { padding-right:0; }
+      .x-ed3 > div + div { border-left:var(--x-hair); }
+      .x-quote { border-top:var(--x-rule); border-bottom:var(--x-rule); margin:16px 0; padding:14px 0 10px; }
+      .x-quote p { font:italic 700 21px/1.32 "Playfair Display", serif; margin:0 0 8px; }
+      .x-quote cite { font:12px/1.3 "IBM Plex Mono", monospace; font-style:normal; color:var(--x-grey); }
+      .x-nums { list-style:none; margin:0 0 18px; padding:0; }
+      .x-nums li { border-bottom:var(--x-hair); padding:8px 0; }
+      .x-nums strong { display:block; font:900 28px/1.05 "Playfair Display", serif; }
+      .x-nums span { font-size:13px; font-variant-caps:all-small-caps; letter-spacing:.08em; color:var(--x-grey); }
+      .x-box { border:var(--x-rule); padding:12px; margin:0 0 18px; font-size:14px; }
+      .x-box h3 { font:900 18px/1.15 "Playfair Display", serif; margin:0 0 6px; }
+      .x-box ul { margin:0; padding-left:18px; }
+      .x-hist { list-style:none; margin:0 0 18px; padding:0; font-size:14px; }
+      .x-hist li { display:grid; grid-template-columns:72px 1fr; gap:8px; padding:5px 0; border-bottom:1px dotted rgba(20,20,20,.4); }
+      .x-hist em { font-style:normal; font-variant-caps:all-small-caps; letter-spacing:.06em; color:var(--x-grey); }
+      .x-hist code, .x-obit code { font:12.5px "IBM Plex Mono", monospace; }
+      .x-obit p { font-size:14px; padding-left:12px; border-left:3px double var(--x-ink); text-align:justify; hyphens:auto; }
+      .x-code { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:20px; border-top:4px double var(--x-ink); margin-top:22px; padding-top:14px; }
+      .x-codebox { border:2px solid var(--x-ink); }
+      .x-codebox header { display:flex; justify-content:space-between; gap:10px; border-bottom:var(--x-rule); padding:7px 10px; font:12px/1.3 "IBM Plex Mono", monospace; }
+      .x-codebox header b { font:700 13px/1.3 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.14em; color:var(--x-red); }
+      .x-codebox pre { margin:0; padding:10px 0; overflow-x:auto; font:13px/1.6 "IBM Plex Mono", monospace; counter-reset:ln; }
+      .x-codebox pre span { display:block; white-space:pre; padding-right:14px; }
+      .x-codebox pre span::before { counter-increment:ln; content:counter(ln); display:inline-block; width:3.2em; padding-right:1em; text-align:right; color:var(--x-grey); border-right:var(--x-hair); margin-right:12px; }
+      .x-notes { font-size:14px; }
+      .x-notes p { font:italic 15px/1.45 "Libre Caslon Text", serif; border-top:var(--x-hair); padding-top:8px; margin:0 0 10px; }
+      .x-notes p::before { content:"✎ "; font-style:normal; color:var(--x-red); }
+      .x-acts { border-top:var(--x-rule); margin-top:22px; padding-top:16px; display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center; }
+      .x-btn { display:inline-block; font:700 14px/1 "Libre Caslon Text", serif; font-variant-caps:all-small-caps; letter-spacing:.12em; text-decoration:none; border:2px solid var(--x-ink); padding:14px 18px; }
+      .x-btn:first-child { background:var(--x-ink); color:var(--x-paper) !important; }
+      .x-btn:hover { background:var(--x-paper); color:var(--x-ink) !important; outline:1px solid var(--x-ink); outline-offset:2px; }
+      .x-also { width:100%; font-size:13px; color:var(--x-grey); }
+      .x-also a { color:var(--x-ink); margin-right:12px; display:inline-block; padding:8px 0; }
+      .x-next { text-align:right; margin-top:16px; font-style:italic; }
+      .x-next a { display:inline-block; padding:10px 0; }
+
+      /* motion */
+      .x-ink { animation:x-ink .8s cubic-bezier(.2,.7,.2,1) both; animation-delay:calc(var(--i, 0) * 110ms); }
+      @keyframes x-ink { from { opacity:0; filter:blur(1.5px); transform:translateY(6px); } to { opacity:1; filter:none; transform:none; } }
+      .x-slide { animation:x-slide .45s cubic-bezier(.2,.7,.2,1) both; }
+      @keyframes x-slide { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:none; } }
+      @media (prefers-reduced-motion: reduce) { .x-ink, .x-slide, .x-tape { animation:none; } .x-tape { flex-wrap:wrap; white-space:normal; } }
+
+      @media (max-width: 1000px) {
+        .x-ads { grid-template-columns:repeat(2, minmax(0,1fr)); }
+        .x-lead-grid { grid-template-columns:1fr; }
+      }
+      @media (max-width: 960px) {
+        .x-top { grid-template-columns:1fr 1fr; }
+        .x-mast { grid-column:1 / -1; grid-row:1; font-size:clamp(34px, 10vw, 84px); }
+      }
+      @media (max-width: 760px) {
+        .x-fp, .x-seconds, .x-ed3, .x-code { grid-template-columns:1fr; }
+        .x-fp-main, .x-seconds > article:first-child { padding-right:0; }
+        .x-fp-side, .x-seconds > article + article { border-left:0; padding-left:0; border-top:var(--x-rule); padding-top:16px; margin-top:16px; }
+        .x-fp-side { border-top:4px double var(--x-ink); }
+        .x-ed3 > div { padding:0 !important; }
+        .x-ed3 > div + div { border-left:0; border-top:var(--x-rule); padding-top:16px !important; margin-top:16px; }
+        .x-lead-grid .x-body { column-count:1; }
+        .x-ads { grid-template-columns:1fr; }
+        .x-brief .x-art { max-width:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="xh" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#141414" stroke-width=".9" /></pattern>
+        <pattern id="xx" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V5M0 0H5" stroke="#141414" stroke-width=".7" fill="none" /></pattern>
+        <pattern id="xd" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="#141414" /></pattern>
+        <marker id="xa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#141414" /></marker>
+      </defs>
+    </svg>
+    <div class="page" id="top">
+      <main class="x-paper" id="app" aria-live="polite"></main>
+      <img id="x-face-src" src="face-og.jpg" alt="" hidden />
+    </div>
+    <script src="hark.js"></script>
+    <script>
+/* STORY DATA */
+const STORIES = [
+{ id:"medigen", kicker:"Health & Science",
+  head:"Student-Built AI Turns a Patient Case Into a Narrated Lecture",
+  deck:"Seventeen versions in fifteen months: from a slide generator to a clinical studio that diagnoses, teaches and speaks.",
+  brief:"Medical students need reasoning, not just answers, and turning one patient case into teaching slides takes hours. MediGen reads a case as text or images, proposes provisional diagnoses with confidence, reasoning, missing information and suggested tests, then builds a lecture: the AI drafts an outline, the student picks topics, and slides are generated, edited and reordered. The newest version, Content Explainer, narrates the material aloud.",
+  story:["Medical students are drilled on answers, but the wards ask for reasoning. Turning a single patient case into teaching slides can swallow an evening, and most of that time goes on layout rather than medicine.",
+    "MediGen takes the case as typed text or as images. It proposes provisional diagnoses, each with a confidence level, the reasoning behind it, the information still missing and the tests worth ordering, and it answers follow-up clinical questions.",
+    "Then it teaches. Rather than dumping a finished deck, the AI first proposes an outline; the user picks the topics worth covering, and only then are slides generated. Every deck stays editable, with sections added or reordered at will, and the latest version explains the content in voice."],
+  quote:"Instead of directly creating a full presentation, the AI will first propose a structured outline of topics… The user can then select topics from this outline to generate the actual presentation slides.",
+  qsrc:"FEATURE_IMPLEMENTATION_PLAN.md",
+  tech:["The app is built in Next.js and TypeScript. Each AI task is a Genkit flow on Gemini whose inputs and outputs are typed with Zod, so the model returns structured data the interface can trust. Firebase handles storage.",
+    "An unusual house rule: every repository ships an LLM_ONBOARDING_GUIDE.md, a REGRESSION_TEST_DOCUMENT.md and a STYLE_GUIDE.md, so AI coding agents onboard like new teammates."],
+  arch:["Case: text or images","Genkit flows · Zod types","Gemini","Diagnosis · outline · slides","Firebase · voice explainer"],
+  file:"generate-presentation-outline.ts",
+  code:`const PresentationOutlineOutputSchema = z.object({
+  outline: z.array(z.string()).describe('A list of topics and sub-topics for the presentation.'),
+});
+const clinicalQuestionPrompt = ai.definePrompt({
+  name: 'generatePresentationOutlinePrompt',
+  input: { schema: PresentationOutlineInputSchema },
+  output: { schema: PresentationOutlineOutputSchema },
+  prompt: \`You are an expert medical educator...
+    2. First Topic: The VERY FIRST topic MUST be "Clinical Case Summary and Key Questions".
+    3. Advanced Content: ... at least 2 distinct case studies ...
+    4. Strict Topic Limit: between 10 and 12.\`,
+});`,
+  notes:["Zod schemas make the LLM return typed JSON, not prose.","Hard constraints in the prompt keep every deck consistent."],
+  nums:[["17","repositories"],["Jul 2025 → Oct 2026","fifteen months of drafts"],["10–12","topics per case deck"],["15","slides per topic deck"]],
+  hist:[["Jul 2025","<code>Medical-Case-PPT</code> (v0)"],["then","<code>Medical-Case-Diagnosis-v1</code>"],["then","<code>Medical-Case-V2</code>: Firebase Storage"],["then","<code>medical-case-v3</code>: suggested topics"],["then","React 19 upgrade"],["Aug 2026","<code>medical-case-v4</code>: gradient slides, UX fixes"],["then","<code>ppt-generator-standalone</code>: runs as exe/apk, no Firebase"],["then","<code>Unified-Medical</code>"],["then","<code>MedicalSynthesis</code>"],["then","<code>medigen-clinical-studio</code>"],["then","<code>FullknowledgeBase</code>: knowledge tree"],["Oct 2026","<code>Content-explainer</code>: voice"]],
+  obits:["<code>Medical-Case-V2</code> (Jul 2025). Survived by v3. Remembered for moving uploads to Firebase Storage.","<code>PPT-Generator_Medical</code> (Jul 2025). The first draft; its outline-first idea lives on."],
+  acts:[["Read the live edition ↗","https://content-explainer.vercel.app"],["Source ↗","https://github.com/abhiraj444/Content-explainer-"]],
+  also:[["Clinical Studio","https://medigen-clinical-studio.vercel.app"],["Synthesis","https://medicalsynthesis.vercel.app"],["Knowledge Base","https://fullexamprep.vercel.app"],["PPT Standalone","https://ppt-generator-standalone.vercel.app"]],
+  cap:"Engraving: the outline-first lecture, from case to narrated slide." },
+
+{ id:"face", kicker:"Arts & Technology",
+  head:"100,000 Particles, Zero Servers: A Portrait Comes Alive in Your Browser",
+  deck:"Built in eighteen days across eight repositories.",
+  brief:"Any portrait becomes a living 3D sculpture you can touch. Face detection, segmentation, depth sculpting and particle physics all run on the phone itself, and no image ever leaves the device. Up to 100,000 particles hold the shape of a face, then assemble, break, swirl in wind or ripple under five fingers at once. Eighteen days and eight repositories later, FaceShare added sharing.",
+  story:["Upload a portrait and it rises off the screen as a sculpture of light-catching points that you can push, pinch and scatter with your fingers.",
+    "Everything happens on the phone. Face detection, segmentation, depth sculpting and the physics that keep every particle in place run in the browser, and no image ever leaves the device. There is no server to send it to.",
+    "The work took eighteen days and eight repositories, from a first experiment to multi-person depth and, finally, a version built for sharing."],
+  quote:"Simulation physics (Hooke's spring forces, 3D curl noise turbulence, touch impulse fields, and shockwave propagation) run on the GPU at 60–120 FPS using double-buffered (ping-pong) Vertex Buffer Objects.",
+  qsrc:"ARCHITECTURE.md",
+  tech:["MediaPipe's FaceLandmarker finds a 478-point mesh and a multiclass segmenter separates hair, skin and background, both in WebAssembly. A hybrid 2.5D depth relief sculpts the face, and blue-noise stippling places particles the way a copperplate engraver places dots.",
+    "WebGL2 transform feedback runs the physics entirely on the GPU. Effects include Assemble, Break, Wind, Vortex and Ripple, and any moment exports as PNG or MP4/WebM video."],
+  arch:["Portrait (stays on device)","MediaPipe 478-pt mesh + segmenter","2.5D depth relief · blue-noise stipple","WebGL2 ping-pong VBOs","PNG · MP4 / WebM export"],
+  file:"shaders.ts · GLSL",
+  code:`for (int i = 0; i < 5; i++) {
+  if (uTouch[i].w < 0.01) continue;
+  vec3 d3 = aPos - uTouch[i].xyz;
+  float rz = max(uTouch[i].z, 0.0001);
+  float distSq = dot(d3, d3);
+  float g = exp(-distSq / (rz * rz * 1.5));
+  vec3 nrm = d3 * inversesqrt(distSq + 1e-6);
+  f += nrm * (g * uTouch[i].w * 3.5);   // radial push
+  f.xy += uTouchVel[i] * g * 2.5;       // drag with finger
+  f.z -= g * uTouch[i].w * 1.5;         // press a dent into depth
+}`,
+  notes:["Five fingers at once, each a Gaussian force field.","The z-dent makes a touch feel like pressing clay."],
+  nums:[["25,000–100,000","particles"],["60–120","frames per second"],["478","face landmarks"],["0","bytes uploaded"]],
+  hist:[["Sep 21","<code>particlefacegrok</code>"],["Sep 22","<code>face-particles-3d</code>"],["Sep 25","<code>facedepth</code> (FaceCloud V2, multi-person)"],["Sep 26","<code>picthreed</code>, <code>threedface</code>, <code>Face-Particles-Studio</code>"],["Oct 9","<code>faceshare</code>: sharing"]],
+  acts:[["Read the live edition ↗","https://faceshare-one.vercel.app"],["Source ↗","https://github.com/abhiraj444/faceshare"]],
+  also:[["faceparticle","https://faceparticle.vercel.app"],["threedface","https://threedface.vercel.app"],["picthreed","https://picthreed.vercel.app"]],
+  img:"face-og.jpg", alt:"A portrait rendered as a cloud of glowing particles", cap:"Face Particles 3D: a portrait rebuilt from points." },
+
+{ id:"print", kicker:"Business",
+  head:"Patna Print Shop Now Runs Itself",
+  deck:"Send a PDF from anywhere, pay by UPI, and a Canon starts printing — no one touches a file.",
+  brief:"A Patna print shop was drowning in WhatsApp PDFs, manual page counts and payment checks. Two years of drafts followed: a Chrome extension to bulk-download documents, a WhatsApp bot that counted pages and charged ₹0.50 each, and now a cloud kiosk. Customers upload from anywhere, arrange up to nine pages a sheet, pay by UPI, and a Canon imageRUNNER starts printing. Nobody touches a file.",
+  story:["The shop counter was a phone. Customers sent PDFs on WhatsApp, someone downloaded each one, counted the pages by hand, worked out the price and checked that the payment had really arrived before anything was printed.",
+    "The fix took two years of drafts. First came a Chrome extension that bulk-downloaded WhatsApp documents (2024–25). Then a WhatsApp print bot that counted pages automatically and priced them at ₹0.50 a page (January 2026). In September 2026 it became a cloud kiosk.",
+    "Now a customer sends files from anywhere, sees exactly what each sheet will look like and what it costs, pays, and the printer starts."],
+  quote:"The system becomes the brain. The printer becomes a fast, dumb output device.",
+  qsrc:"print-shop blueprint",
+  tech:["The web app merges several files, imposes pages 2, 4, 6 or 9 to a sheet (or a custom layout), inverts dark slides to save toner, and shows a live sheet preview with the price before payment through Razorpay UPI.",
+    "A Cloudflare Worker with a Durable Object relays each job over a WebSocket tunnel to a Windows laptop agent, which rasterises at 150 DPI grayscale and prints to a Canon imageRUNNER 7105.",
+    "A proof of concept goes further: Android's built-in “Add printer” speaks raw IPP straight to the Worker."],
+  arch:["Web app: merge · N-in-1 · UPI","Cloudflare Worker + Durable Object","WebSocket tunnel","Laptop agent · 150 DPI raster","Canon imageRUNNER 7105"],
+  file:"ipp-handler.ts",
+  code:`export function buildIppResponse(statusCode: number, requestId: number, groups: Buffer[]): Buffer {
+  const header = Buffer.alloc(8);
+  header.writeUInt8(2, 0);              // version-major
+  header.writeUInt8(0, 1);              // version-minor
+  header.writeUInt16BE(statusCode, 2);
+  header.writeInt32BE(requestId, 4);
+  const opGroupTag = Buffer.from([0x01]); // operation-attributes-tag
+  const charset = encodeString(0x47, 'attributes-charset', 'utf-8');
+  const lang = encodeString(0x48, 'attributes-natural-language', 'en');
+  return Buffer.concat([header, opGroupTag, charset, lang, ...groups, Buffer.from([0x03])]);
+}`,
+  notes:["Speaking the printer's binary protocol by hand, byte by byte.","No driver, no companion app: Android thinks it found a real printer."],
+  nums:[["₹0.50","per page"],["9","pages per sheet"],["150","DPI grayscale raster"],["₹0","infrastructure"]],
+  hist:[["2024–25","Chrome extension bulk-downloads WhatsApp documents"],["Jan 2026","WhatsApp print bot: automatic page count, ₹0.50/page"],["Sep 2026","Cloud kiosk with UPI and remote printing"]],
+  acts:[["Read the live edition ↗","https://web-app-pink-nine.vercel.app"],["Source ↗","https://github.com/abhiraj444/ippPrint"]],
+  cap:"Engraving: the dumb output device, fed by the cloud." },
+
+{ id:"agent", kicker:"Technology", live:"The plan ↗",
+  head:"An AI That Browses Like a Human — and Knows When to Ask for Help",
+  deck:"Six milestones in two days; web pages shrunk up to 440 times.",
+  brief:"Browser agents are slow, expensive and stopped by bot checks. This one reads each page as a compact agent map, shrinking Amazon.in roughly 440 times, then moves the mouse and types like a person at the operating-system level. When a captcha appears it freezes the browser and hands a live view to the human, resuming once the way is clear. Six milestones landed in two days.",
+  story:["Browser agents promise to do the clicking for you, but they are slow, expensive in tokens and stopped cold by bot checks.",
+    "This one reads a page as a compact “agent map” instead of raw HTML, then moves the mouse and types like a person, at the operating-system level rather than through scripted events.",
+    "When a captcha appears it does not fight it. It freezes the browser exactly as it is, hands a live view to the human, and resumes once the page is clear."],
+  quote:"On block: pause agent, freeze browser as-is, notify user, open live view… Resume: auto-detect clearance or user taps Resume.",
+  qsrc:"PLAN.md",
+  tech:["The agent passively captures the accessibility tree over the Chrome DevTools Protocol, labels page regions and folds them to a token budget: every benchmark map fits in 3k tokens or fewer. It can expand, crop or diff any part by stable ID.",
+    "Bezier mouse paths and human-paced typing go through XTEST. The LLM loop runs on a free-first model chain via OpenRouter, with a recorder for deterministic replay and a Docker runner that offers noVNC takeover."],
+  arch:["Chrome via CDP","Accessibility tree → agent map","LLM loop · OpenRouter","XTEST mouse & keys","Captcha → noVNC human takeover"],
+  file:"agentmap.py",
+  code:`def fold_line(n):
+    s, r = stats(n), n['role']
+    if r == 'paragraph':
+        words = flat_text(n, 400).split()
+        return f"{' '.join(words[:LEAD_WORDS])}… ▸[{n['id']}] +{max(0, s['words'] - LEAD_WORDS)} words, {s['links']} links"`,
+  notes:["Instead of feeding the LLM a whole page, fold it into one line and let the agent expand only what it needs."],
+  nums:[["~440×","smaller: Amazon.in"],["~100×","smaller: SarkariResult"],["16.7k → 3.0k","Wikipedia, in tokens"],["M1–M6","done Oct 6–7, 2026"]],
+  hist:[["2024","<code>seleniumWebScraping</code>"],["2025","<code>single-framework</code>: hybrid Java framework"],["Aug 2025","<code>screen-capture-solver</code> extension"],["then","<code>automaio</code>"],["then","<code>Botskipper</code>: API contract inference"],["Oct 2026","<code>agent-browser</code>"]],
+  side:{t:"Also from the lab: JevStudio", p:"Turns documents into reusable AI decision recipes. <a href=\"https://explorejev.vercel.app\" target=\"_blank\" rel=\"noopener\">Live app ↗</a>"},
+  acts:[["Read the plan ↗","https://github.com/abhiraj444/agent-browser"]],
+  cap:"Engraving: a cursor that moves like a hand." },
+
+{ id:"docs", kicker:"Utilities",
+  head:"Adobe-Scan-Grade Cleanup, Now in a Browser Tab",
+  deck:"Born from exam forms that demanded a signature of exactly 20 KB.",
+  brief:"Government exam forms demand a signature of exactly 20 KB and a photo cut to the millimetre, and phone scans of notes look terrible. Document Vision brings Adobe-Scan-grade cleanup to a browser tab: live edge detection, an eight-point crop with a loupe, Magic Color, Whiteboard and adaptive black-and-white filters, an eraser and multi-page reordering, all processed on the device.",
+  story:["Government exam forms are unforgiving: the signature and photo must hit exact dimensions and an exact file size, or the application bounces.",
+    "Phone scans of handwritten notes have the opposite problem: shadows, skew and grey paper. Document Vision began as a signature cleaner for those forms and grew into a full scanner that runs in a browser tab."],
+  quote:"Level, crop, and scale portrait photographs to exact dimensional boundaries (mm, inch, px) and strict target file size (KB) constraints.",
+  qsrc:"SignVec spec",
+  tech:["The camera view detects page boundaries live. An 8-point crop with a 2.5x loupe sets the corners and edges, then perspective rectification flattens the page.",
+    "Magic Color, Whiteboard and Sauvola adaptive black-and-white filters clean it up, an inpainting eraser removes marks, and pages reorder freely. The whole computer-vision pipeline runs in a Web Worker, and a signature vectoriser exports clean SVG."],
+  arch:["Camera · live boundary detection","8-point crop · perspective fix","Web Worker CV filters","Inpainting eraser · reorder","PDF pages · SVG signature"],
+  nums:[["60","FPS"],["8","crop handles"],["6","filters"]],
+  hist:[["Jun 2026","Signature &amp; Photo cleaner"],["Aug 2026","<code>passportphoto</code>, DocClean Scanner"],["Sep 2026","<code>adobe-scan-web</code>"],["Oct 2026","<code>docclean</code> inverse optimizer"]],
+  acts:[["Read the live edition ↗","https://adobe-scan-web.vercel.app"],["Source ↗","https://github.com/abhiraj444/adobe-scan-web"]],
+  also:[["Signature","https://signaturecleaner.vercel.app"],["Doc cleaner","https://document-cleaner-lemon.vercel.app"],["Scanner","https://pdfcleaner-smoky.vercel.app"],["Passport photo","https://abhiraj444.github.io/passportphoto/"]],
+  cap:"Engraving: a scanned sheet held by eight handles." },
+
+{ id:"pyq", kicker:"Education",
+  head:"Aspirant Builds the Study Tool He Couldn't Find",
+  deck:"Blurry previous-year papers in, exam-speed study guides out, at a fifth of the AI bill.",
+  brief:"Built during his own railway exam preparation, PYQ Studio turns years of blurry previous-year papers into exam-speed guides. Pages are stitched into composite grids, cutting vision tokens by up to 80%, then the model classifies question types, teaches first principles, flags common traps and offers 30-second speed tricks. Formulas render in KaTeX, and every guide exports for printing.",
+  story:["It was built during his own railway exam preparation. The raw material was years of scanned previous-year question papers, the textbook solutions were slow, and sending every page to a vision AI ran up huge token costs.",
+    "PYQ Studio stitches pages into composite grids, then asks the model to classify question types, teach first principles, flag common traps and give 30-second speed tricks. Formulas render in KaTeX and every guide exports for printing."],
+  quote:"Compiles multiple pages into an intelligent composite grid image (saving up to 80% on multimodal vision tokens while preserving legibility).",
+  qsrc:"PROJECT_OVERVIEW.md",
+  tech:["Several scanned pages become one composite image, so a single model call reads up to nine pages. The grid's shape follows the pages' orientation, keeping small print legible while the token bill falls by up to 80%."],
+  arch:["Scanned PYQ pages","Composite grid · up to 9 pages","Vision model, one call","Types · principles · traps · tricks","KaTeX · printable export"],
+  file:"grid.ts",
+  code:`export function determineGridDimensions(pagesPerImage: number, isLandscape: boolean) {
+  switch (pagesPerImage) {
+    case 2: return isLandscape ? { cols: 1, rows: 2 } : { cols: 2, rows: 1 };
+    case 4: return { cols: 2, rows: 2 };
+    case 6: return isLandscape ? { cols: 2, rows: 3 } : { cols: 3, rows: 2 };
+    case 9: return { cols: 3, rows: 3 };
+    default:
+      const cols = Math.ceil(Math.sqrt(pagesPerImage));
+      return { cols, rows: Math.ceil(pagesPerImage / cols) };
+  }
+}`,
+  notes:["Nine pages, one image, one model call.","Grid shape follows page orientation so text stays legible."],
+  nums:[["80%","fewer vision tokens, at most"],["9","pages per image"]],
+  side:{t:"Also from the same desk", p:"<ul><li><a href=\"https://answer-hiding.vercel.app\" target=\"_blank\" rel=\"noopener\">Answer Hider ↗</a>: hides answers in practice PDFs.</li><li>BookMind: a local RAG reader for PDFs.</li><li>StudyFlow: a voice-first Android study tracker (“Hey Google, start studying”).</li></ul>"},
+  acts:[["Read the live edition ↗","https://pyqdisect.vercel.app"],["Source ↗","https://github.com/abhiraj444/Pyqdisect"]],
+  cap:"Engraving: nine pages, one image." },
+
+{ id:"walktalk", kicker:"Home & Family", live:"APK ↗",
+  head:"Hold to Talk: A Family Intercom That Crosses the House and the Country",
+  deck:"Under 80 milliseconds on home Wi-Fi; anywhere on 4G.",
+  brief:"Calling family in the next room should not need a phone call. WalkTalk is push-to-talk: hold the button and your voice plays straight through the other phone's speaker. On home Wi-Fi it routes locally in under 80 milliseconds; away from home it crosses 4G through a free Cloudflare tunnel and relay. Adaptive GPS sips under 1% battery an hour, and SOS cuts through Do Not Disturb.",
+  story:["Calling someone in the next room should not need a phone call, with its ringing, answering and hanging up.",
+    "WalkTalk is push-to-talk for a family: hold the button, speak, and your voice plays straight through the other phone's speaker, whether they are upstairs or in another city."],
+  quote:"Seamlessly routes over local home Wi-Fi via mDNS (< 80ms) and automatically traverses WAN/CGNAT using a free Cloudflare Quick Tunnel and Cloudflare Realtime TURN relay.",
+  qsrc:"README",
+  tech:["A Kotlin Android app carries WebRTC audio and video. A Node WebSocket server runs around the clock on a home PC, and Firebase Realtime Database with FCM wakes sleeping phones.",
+    "Adaptive GPS uses under 1% battery an hour when the phone is still, and an SOS mode bypasses Do Not Disturb."],
+  arch:["Kotlin Android app · WebRTC","mDNS on home Wi-Fi · <80 ms","Node WebSocket server · home PC","Cloudflare Tunnel + TURN relay","Firebase RTDB + FCM wake"],
+  nums:[["<80 ms","on home Wi-Fi"],["<1%/hr","battery when still"],["1 TB","free relay a month"]],
+  side:{t:"Also from the lab: PortRadar", p:"An orbital radar of every open port on a laptop, explained in plain English."},
+  acts:[["Download the APK ↗","https://github.com/abhiraj444/walktalk/releases"],["Source ↗","https://github.com/abhiraj444/walktalk"]],
+  cap:"Engraving: hold to talk." }
+];
+
+/* ENGRAVINGS: black-ink line art, hatched with the shared patterns */
+const S = (b, vb = "0 0 240 160") => `<svg viewBox="${vb}" aria-hidden="true" focusable="false" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${b}</svg>`;
+const ART = {
+  medigen: S(`<rect x="44" y="20" width="150" height="92" fill="url(#xh)" stroke="none"/><rect x="38" y="14" width="150" height="92" fill="#F3EEE3"/><rect x="50" y="26" width="52" height="8" fill="#141414"/><path d="M50 46h70M50 56h60M50 66h66M50 76h48M50 86h56"/><rect x="134" y="40" width="40" height="40" fill="url(#xx)"/><path d="M148 48h12v8h8v12h-8v8h-12v-8h-8v-12h8z" fill="#F3EEE3"/><path d="M80 106l-16 46M146 106l16 46M113 106v46M70 132h86"/><path d="M200 50q8 10 0 20M208 44q14 16 0 32M216 38q20 22 0 44"/>`),
+  print: S(`<path d="M76 58V18h70l12 12v28" fill="#F3EEE3"/><path d="M146 18v12h12M88 32h44M88 40h52M88 48h36"/><rect x="40" y="58" width="164" height="54" fill="#F3EEE3"/><rect x="40" y="88" width="164" height="24" fill="url(#xh)"/><path d="M40 88h164"/><circle cx="182" cy="72" r="4" fill="#141414"/><circle cx="168" cy="72" r="4"/><rect x="56" y="66" width="60" height="12" fill="url(#xd)"/><path d="M70 112l-8 34h124l-8-34" fill="#F3EEE3"/><path d="M80 124h84M78 132h88M76 140h92" stroke-width="1"/><path d="M30 150h184" stroke-width="2.4"/>`),
+  agent: S(`<rect x="26" y="16" width="188" height="128" fill="#F3EEE3"/><path d="M26 34h188"/><rect x="26" y="16" width="188" height="18" fill="url(#xh)"/><circle cx="38" cy="25" r="3" fill="#F3EEE3"/><circle cx="50" cy="25" r="3" fill="#F3EEE3"/><circle cx="62" cy="25" r="3" fill="#F3EEE3"/><rect x="40" y="46" width="90" height="10" fill="#141414"/><path d="M40 68h150M40 78h130M40 88h144M40 98h96" stroke-width="1.2"/><rect x="40" y="110" width="58" height="20" fill="url(#xx)"/><path d="M60 140C90 70 130 150 158 104" stroke-dasharray="3 4" stroke-width="1.2"/><path d="M158 96l0 34l8-8l6 14l6-3l-6-13l11-1z" fill="#141414" stroke="#F3EEE3" stroke-width="1"/>`),
+  docs: S(`<rect x="0" y="0" width="240" height="160" fill="url(#xx)" stroke="none" opacity=".55"/><path d="M58 22L178 14L196 142L46 150Z" fill="#F3EEE3" stroke-width="2"/><path d="M70 40l96-6M72 52l92-6M73 64l80-5M75 78l96-6M76 90l88-5M78 104l70-4M79 118l92-6" stroke-width="1"/><path d="M98 132q10-12 18 0t18-2" stroke-width="1.4"/>${[[58,22],[178,14],[196,142],[46,150],[118,18],[187,78],[121,146],[52,86]].map(([x,y])=>`<rect x="${x-4}" y="${y-4}" width="8" height="8" fill="#141414"/>`).join("")}<circle cx="204" cy="40" r="20" fill="#F3EEE3" stroke-width="2"/><path d="M190 40h28M204 26v28" stroke-width="1"/>`),
+  pyq: S(`${[0,1,2].map(r=>[0,1,2].map(c=>{const x=58+c*42,y=12+r*46;return `<rect x="${x}" y="${y}" width="38" height="42" fill="#F3EEE3"/><path d="M${x+5} ${y+8}h22M${x+5} ${y+15}h28M${x+5} ${y+22}h18M${x+5} ${y+29}h26" stroke-width=".9"/>`}).join("")).join("")}<rect x="52" y="6" width="138" height="146" stroke-width="2.4"/><rect x="194" y="10" width="6" height="146" fill="url(#xh)" stroke="none"/><path d="M20 80h26" marker-end="url(#xa)"/><path d="M204 80h26" marker-end="url(#xa)"/>`),
+  walktalk: S(`<path d="M104 36V6" stroke-width="5"/><rect x="88" y="34" width="68" height="118" rx="8" fill="#F3EEE3" stroke-width="2"/><rect x="88" y="34" width="12" height="118" fill="url(#xh)" stroke="none"/><rect x="100" y="46" width="44" height="22" fill="url(#xd)"/><path d="M102 82h40M102 90h40M102 98h40M102 106h40M102 114h40" stroke-width="1.4"/><rect x="82" y="72" width="6" height="26" fill="#141414"/><circle cx="122" cy="134" r="7" fill="#141414"/><path d="M166 70q10 14 0 28M176 62q18 22 0 44M186 54q26 30 0 60"/><path d="M78 70q-10 14 0 28M68 62q-18 22 0 44" stroke-width="1.2"/>`)
+};
+const arch = (nodes) => {
+  const h = 30, g = 20, w = 220, H = nodes.length * (h + g) - g + 8;
+  return S(nodes.map((t, i) => { const y = 4 + i * (h + g);
+    return `<rect x="16" y="${y + 4}" width="${w - 20}" height="${h}" fill="url(#xh)" stroke="none"/><rect x="10" y="${y}" width="${w - 20}" height="${h}" fill="#F3EEE3"/><text x="${w / 2}" y="${y + 19}" text-anchor="middle" fill="#141414" stroke="none" font-family="IBM Plex Mono, monospace" font-size="10">${t.replace(/</g, "&lt;")}</text>` + (i < nodes.length - 1 ? `<path d="M${w / 2} ${y + h}v${g - 2}" marker-end="url(#xa)" stroke-width="1.2"/>` : "");
+  }).join(""), `0 0 ${w} ${H}`);
+};
+/* RENDER */
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const ext = (href, label, cls = "") => `<a${cls ? ` class="${cls}"` : ""} href="${href}" target="_blank" rel="noopener">${label}</a>`;
+const N = (s) => STORIES.indexOf(s) + 1;
+const fig = (s, small) => s.img
+  ? `<figure class="x-art x-photo"><img src="${document.getElementById("x-face-src").getAttribute("src")}" alt="${s.alt}" /><figcaption>${s.cap}</figcaption></figure>`
+  : `<figure class="x-art">${ART[s.id]}${small ? "" : `<figcaption>${s.cap}</figcaption>`}</figure>`;
+const more = (s) => `<p class="x-more"><span class="x-jump">Continued in Edition ${N(s)} →</span><a href="#/${s.id}">Read the full edition →</a>${ext(s.acts[0][1], s.live || "Live app ↗", "x-live")}</p>`;
+const item = (s, cls, i, tag = "h3") => `<article class="${cls} x-ink" style="--i:${i}"><p class="x-k">${s.kicker}</p><${tag} class="x-h"><a href="#/${s.id}" style="text-decoration:none">${s.head}</a></${tag}><p class="x-deck">${s.deck}</p>`;
+const by = (id) => STORIES.find((s) => s.id === id);
+
+function front() {
+  const tick = ["MEDIGEN ▲17 versions", "FACE ▲8", "PRINT ▲2 yrs", "AGENT ▲6 milestones", "PYQ ▼80% tokens", "WALKTALK &lt;80ms"].map((t) => `<span>${t}</span>`).join("");
+  const lead = by("medigen");
+  return `
+  <header class="x-ink" style="--i:0">
+    <div class="x-top">
+      <p class="x-ear"><b>Price</b>Free · Open Source</p>
+      <h1 class="x-mast">The Abhiraj Times</h1>
+      <p class="x-ear"><b>Weather</b>Build Forecast: Agent Browser clearing, M7 expected</p>
+    </div>
+    <p class="x-dateline">Patna, Bihar · Saturday, October 10, 2026 · Vol. VIII · 78 Repositories · All the code that's fit to ship</p>
+    <div class="x-ticker" role="marquee" aria-label="Project ticker"><b>Markets</b><div class="x-tape"><div>${tick}</div><div aria-hidden="true">${tick}</div></div></div>
+  </header>
+  <div class="x-fp">
+    <div class="x-fp-main">
+      ${item(lead, "x-lead", 1, "h2")}
+        <div class="x-lead-grid">${fig(lead)}<div class="x-body"><p class="x-drop">${lead.brief}</p>${more(lead)}</div></div>
+      </article>
+      <div class="x-seconds">
+        ${["face", "print"].map((id, i) => { const s = by(id); return `${item(s, "", i + 2)}${fig(s)}<div class="x-body"><p class="x-drop">${s.brief}</p></div>${more(s)}</article>`; }).join("")}
+      </div>
+    </div>
+    <aside class="x-fp-side">
+      <p class="x-label x-ink" style="--i:2">In Brief</p>
+      ${["agent", "docs", "pyq", "walktalk"].map((id, i) => { const s = by(id); return `${item(s, "x-brief", i + 3)}${fig(s, true)}<div class="x-body"><p>${s.brief}</p></div>${more(s)}</article>`; }).join("")}
+      <div class="x-editor x-ink" style="--i:7">
+        <p class="x-label" style="border-top:0">From the Editor</p>
+        <p>“78 repositories, eight products. Most of the ‘duplicates’ on my GitHub are drafts: v1, v2, v4. This paper reports how each one grew.”</p>
+        <cite>— Abhinav Raj</cite>
+      </div>
+    </aside>
+  </div>
+  <section class="x-class x-ink" style="--i:8" aria-label="Classifieds">
+    <p class="x-label">Classifieds</p>
+    <div class="x-ads">
+      <p class="x-ad"><b>FOR FREE</b>Eclipse simulator. Moon tilted 5.14°. Apply within ${ext("https://abhiraj444.github.io/Moon-earth-eclipse-/", "↗ abhiraj444.github.io/Moon-earth-eclipse-")}</p>
+      <p class="x-ad"><b>TO LET</b>3D floors from your 2D plan ${ext("https://3dfloordesign.vercel.app", "↗ 3dfloordesign.vercel.app")}</p>
+      <p class="x-ad"><b>TIME KEEPING</b>${ext("https://abhiraj444.github.io/Bubble-clock/", "Bubble Clock ↗")} and ${ext("https://abhiraj444.github.io/bubble-pomo/", "Bubble Pomodoro ↗")}</p>
+      <p class="x-ad"><b>SERVICES</b>Push whole folders to GitHub from your phone ${ext("https://abhiraj444.github.io/Uploadfolder/", "↗ abhiraj444.github.io/Uploadfolder")}</p>
+      <p class="x-ad"><b>WANTED</b>Your next product idea. Enquire at ${ext("https://github.com/abhiraj444", "github.com/abhiraj444")}</p>
+    </div>
+  </section>
+  ${footer()}`;
+}
+
+const footer = () => `<footer class="x-foot">Printed &amp; published by Abhinav Raj, Patna · ${ext("https://github.com/abhiraj444", "github.com/abhiraj444")}</footer>`;
+
+function edition(s) {
+  const n = N(s), next = STORIES[n % STORIES.length];
+  return `<div class="x-slide">
+  <a class="x-back" href="#/">← Back to front page</a>
+  <header class="x-edmast">
+    <p class="x-mast">The Abhiraj Times</p>
+    <p>— Special Edition No. ${n} —</p>
+  </header>
+  <p class="x-dateline" style="border-top:0;margin-top:0">Patna, Bihar · Saturday, October 10, 2026 · ${s.kicker} Desk</p>
+  <div class="x-edhead">
+    <p class="x-k">${s.kicker}</p>
+    <h1 class="x-h" tabindex="-1" id="ed-h">${s.head}</h1>
+    <p class="x-deck">${s.deck}</p>
+    <p class="x-by">By Abhinav Raj, Product Desk</p>
+  </div>
+  <div class="x-ed3">
+    <div>
+      <p class="x-label">The Story</p>
+      <div class="x-body">${s.story.map((p, i) => `<p${i ? "" : ' class="x-drop"'}>${p}</p>`).join("")}</div>
+      ${fig(s)}
+      <blockquote class="x-quote"><p class="x-label" style="border:0;padding:0">From the Spec</p><p>“${s.quote}”</p><cite>— ${s.qsrc}</cite></blockquote>
+    </div>
+    <div>
+      <p class="x-label">Technical Feature</p>
+      <div class="x-body">${s.tech.map((p) => `<p>${p}</p>`).join("")}</div>
+      <figure class="x-art">${arch(s.arch)}<figcaption>How it works, in order.</figcaption></figure>
+    </div>
+    <div>
+      <p class="x-label">By the Numbers</p>
+      <ul class="x-nums">${s.nums.map(([f, l]) => `<li><strong>${esc(f)}</strong><span>${l}</span></li>`).join("")}</ul>
+      ${s.side ? `<div class="x-box"><h3>${s.side.t}</h3>${s.side.p.startsWith("<ul") ? s.side.p : `<p>${s.side.p}</p>`}</div>` : ""}
+      ${s.hist ? `<p class="x-label">This Week in History</p><ol class="x-hist">${s.hist.map(([w, t]) => `<li><em>${w}</em><span>${t}</span></li>`).join("")}</ol>` : ""}
+      ${s.obits ? `<div class="x-obit"><p class="x-label" style="border-left:0;padding-left:0">Obituaries</p>${s.obits.map((o) => `<p>${o}</p>`).join("")}</div>` : ""}
+    </div>
+  </div>
+  ${s.code ? `<div class="x-code">
+    <div class="x-codebox"><header><b>Code of the Day</b><span>${s.file}</span></header><pre tabindex="0" aria-label="Code from ${s.file}">${s.code.split("\n").map((l) => `<span>${esc(l) || " "}</span>`).join("")}</pre></div>
+    <aside class="x-notes"><p class="x-label">Editor's Notes</p>${s.notes.map((t) => `<p>${t}</p>`).join("")}</aside>
+  </div>` : ""}
+  <div class="x-acts">
+    ${s.acts.map(([l, u]) => ext(u, l, "x-btn")).join("")}
+    ${s.also ? `<p class="x-also"><span class="x-sc">Also on newsstands:</span> ${s.also.map(([l, u]) => ext(u, l + " ↗")).join("")}</p>` : ""}
+  </div>
+  <p class="x-next"><a href="#/${next.id}">Continued in Edition ${N(next)}: ${next.head} →</a></p>
+  ${footer()}
+  </div>`;
+}
+
+const app = document.getElementById("app");
+function route() {
+  const id = location.hash.replace(/^#\/?/, "");
+  const s = by(id);
+  app.innerHTML = s ? edition(s) : front();
+  document.title = s ? `${s.head} · The Abhiraj Times` : "The Abhiraj Times";
+  window.scrollTo(0, 0);
+  if (s) document.getElementById("ed-h").focus({ preventScroll: true });
+}
+window.addEventListener("hashchange", route);
+route();
+    </script>
+  </body>
+</html>
